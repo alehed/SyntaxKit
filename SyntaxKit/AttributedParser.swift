@@ -47,7 +47,7 @@ open class AttributedParser: Parser {
         mutableString.beginEditing()
         parse(mutableString.string) { _, range, attributes in
             if let attributes = attributes {
-                mutableString.setAttributes(attributes, range: range)
+                mutableString.addAttributes(attributes, range: range)
             }
         }
         mutableString.endEditing()
