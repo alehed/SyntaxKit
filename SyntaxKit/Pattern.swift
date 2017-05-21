@@ -55,21 +55,21 @@ class Pattern: NSObject {
         _name = dictionary["name"] as? String
 
         if let matchExpr = dictionary["match"] as? String {
-            _match = try? NSRegularExpression(pattern: matchExpr, options: [.anchorsMatchLines])
+            _match = try? NSRegularExpression.languagePattern(matchExpr, options: [.anchorsMatchLines])
             if debug && self.match == nil {
                 print("Problem parsing match expression \(matchExpr)")
             }
         }
 
         if let beginExpr = dictionary["begin"] as? String {
-            _begin = try? NSRegularExpression(pattern: beginExpr, options: [.anchorsMatchLines])
+            _begin = try? NSRegularExpression.languagePattern(beginExpr, options: [.anchorsMatchLines])
             if debug && self.begin == nil {
                 print("Problem parsing begin expression \(beginExpr)")
             }
         }
 
         if let endExpr = dictionary["end"] as? String {
-            _end = try? NSRegularExpression(pattern: endExpr, options: [.anchorsMatchLines])
+            _end = try? NSRegularExpression.languagePattern(endExpr, options: [.anchorsMatchLines])
             if debug && self.end == nil {
                 print("Problem parsing end expression \(endExpr)")
             }
@@ -240,3 +240,19 @@ class Include: Pattern {
         self.subpatterns = pattern.subpatterns
     }
 }
+
+fileprivate extension NSRegularExpression {
+    static func languagePattern(_ pattern: String, options: NSRegularExpression.Options) throws -> NSRegularExpression {
+        var realPattern = pattern
+        var realOptions = options
+        if let multilineOption = pattern.range(of:"(?x)"),
+            multilineOption.lowerBound == pattern.startIndex
+        {
+            realPattern = String(pattern.substring(from: multilineOption.upperBound))
+            realOptions.insert(.allowCommentsAndWhitespace)
+        }
+        
+        return try NSRegularExpression(pattern: realPattern, options: realOptions)
+    }
+}
+
