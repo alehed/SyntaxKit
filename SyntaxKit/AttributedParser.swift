@@ -43,6 +43,16 @@ open class AttributedParser: Parser {
         }
     }
 
+    open func addAttributes(to mutableString: NSMutableAttributedString) {
+        mutableString.beginEditing()
+        parse(mutableString.string) { _, range, attributes in
+            if let attributes = attributes {
+                mutableString.addAttributes(attributes, range: range)
+            }
+        }
+        mutableString.endEditing()
+    }
+    
     open func attributedString(for string: String, base: Attributes? = nil) -> NSAttributedString {
         let output = NSMutableAttributedString(string: string, attributes: base)
         output.beginEditing()
