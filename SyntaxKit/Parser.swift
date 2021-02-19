@@ -147,7 +147,7 @@ open class Parser {
                 }
 
                 guard let middleMatch = bestMatchForMiddle,
-                      let middleResult = middleMatch.pattern.match != nil ? middleMatch.match : matchAfterBegin(of: middleMatch.pattern, beginResults: middleMatch.match) else {
+                      let middleResult = middleMatch.pattern.match != nil ? middleMatch.match : self.matchAfterBegin(of: middleMatch.pattern, beginResults: middleMatch.match) else {
                     break
                 }
                 if middleResult.range.length == 0 {
@@ -232,7 +232,7 @@ open class Parser {
     /// - returns:  The result of matching the given pattern or nil on abortion.
     private func matchAfterBegin(of pattern: Pattern, beginResults begin: ResultSet) -> ResultSet? {
         let newLocation = NSMaxRange(begin.range)
-        guard let endResults = matchSubpatterns(of: pattern, in: NSRange(location: newLocation, length: (toParse.string as NSString).length - newLocation), beginResults: begin) else {
+        guard let endResults = self.matchSubpatterns(of: pattern, in: NSRange(location: newLocation, length: (toParse.string as NSString).length - newLocation), beginResults: begin) else {
             return nil
         }
 
