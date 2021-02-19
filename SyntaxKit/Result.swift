@@ -14,15 +14,18 @@ internal struct Result: Equatable {
 
     let patternIdentifier: String
     var range: NSRange
+    let result: NSTextCheckingResult?
     let attribute: AnyObject?
 
     // MARK: - Initializers
 
-    init(identifier: String, range: NSRange, attribute: AnyObject? = nil) {
+    init(identifier: String, range: NSRange, result: NSTextCheckingResult? = nil, attribute: AnyObject? = nil) {
         self.patternIdentifier = identifier
         self.range = range
+        self.result = result
         self.attribute = attribute
     }
+    
 }
 
 internal func == (lhs: Result, rhs: Result) -> Bool {

@@ -25,7 +25,7 @@ internal class IncrementalParsingTests: XCTestCase {
     }
 
     func testEdits() {
-        input = fixture("swifttest.swift", "txt")
+        input = fixture("test.swift", "txt")
         parsingOperation = getParsingOperation()
 
         parsingOperation?.main()
@@ -62,7 +62,7 @@ internal class IncrementalParsingTests: XCTestCase {
     }
 
     func testPerformanceInScope() {
-        input = fixture("swifttest.swift", "txt")
+        input = fixture("test.swift", "txt")
         parsingOperation = getParsingOperation()
 
         parsingOperation?.main()
@@ -75,7 +75,7 @@ internal class IncrementalParsingTests: XCTestCase {
     }
 
     func testPerformanceEdgeCases() {
-        input = fixture("swifttest.swift", "txt")
+        input = fixture("test.swift", "txt")
         parsingOperation = getParsingOperation()
 
         parsingOperation?.main()

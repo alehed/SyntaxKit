@@ -91,7 +91,7 @@
 		8C2EB35F1D4B524F005ECE2B /* IncrementalParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C71A05C1C59587700041EC6 /* IncrementalParsingTests.swift */; };
 		8C2EB3601D4B524F005ECE2B /* ScopedStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE6BE2D1C5D1BBA002676BD /* ScopedStringTests.swift */; };
 		8C2EB3611D4B525A005ECE2B /* Swift.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = 8CE8D1131C4EBF58005A86B3 /* Swift.tmLanguage */; };
-		8C2EB3621D4B525A005ECE2B /* swifttest.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD221C4D877D008ECD6D /* swifttest.swift.txt */; };
+		8C2EB3621D4B525A005ECE2B /* test.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD221C4D877D008ECD6D /* test.swift.txt */; };
 		8C2EB3631D4B525A005ECE2B /* Solarized.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD251C4D87D6008ECD6D /* Solarized.tmTheme */; };
 		8C4D09C01E1EAF750034974A /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4D09BF1E1EAF750034974A /* PerformanceTests.swift */; };
 		8C4D09C11E1EAF750034974A /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4D09BF1E1EAF750034974A /* PerformanceTests.swift */; };
@@ -102,17 +102,14 @@
 		8C4D09C81E1EB07D0034974A /* Tex.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D09C71E1EB07D0034974A /* Tex.tmLanguage */; };
 		8C4D09C91E1EB07D0034974A /* Tex.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D09C71E1EB07D0034974A /* Tex.tmLanguage */; };
 		8C4D09CA1E1EB07D0034974A /* Tex.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D09C71E1EB07D0034974A /* Tex.tmLanguage */; };
-		8C4D09CC1E1EB16C0034974A /* textest.tex.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D09CB1E1EB16C0034974A /* textest.tex.txt */; };
-		8C4D09CD1E1EB16C0034974A /* textest.tex.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D09CB1E1EB16C0034974A /* textest.tex.txt */; };
-		8C4D09CE1E1EB16C0034974A /* textest.tex.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D09CB1E1EB16C0034974A /* textest.tex.txt */; };
 		8C71A05D1C59587700041EC6 /* IncrementalParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C71A05C1C59587700041EC6 /* IncrementalParsingTests.swift */; };
 		8C71A05E1C59587700041EC6 /* IncrementalParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C71A05C1C59587700041EC6 /* IncrementalParsingTests.swift */; };
 		8C9003331C5C0B0D00CBA5B0 /* ScopedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9003321C5C0B0D00CBA5B0 /* ScopedString.swift */; };
 		8C9003341C5C0B0D00CBA5B0 /* ScopedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9003321C5C0B0D00CBA5B0 /* ScopedString.swift */; };
-		8CAEC6BA1D3BB297001C57D3 /* swifttest.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD221C4D877D008ECD6D /* swifttest.swift.txt */; };
+		8CAEC6BA1D3BB297001C57D3 /* test.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD221C4D877D008ECD6D /* test.swift.txt */; };
 		8CB2FD261C4D87D6008ECD6D /* Solarized.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD251C4D87D6008ECD6D /* Solarized.tmTheme */; };
 		8CB2FD271C4D87D6008ECD6D /* Solarized.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD251C4D87D6008ECD6D /* Solarized.tmTheme */; };
-		8CB2FD281C4D891A008ECD6D /* swifttest.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD221C4D877D008ECD6D /* swifttest.swift.txt */; };
+		8CB2FD281C4D891A008ECD6D /* test.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8CB2FD221C4D877D008ECD6D /* test.swift.txt */; };
 		8CDD6F1B1C71594B0063915A /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD6F1A1C71594B0063915A /* BundleManager.swift */; };
 		8CDD6F1C1C71594B0063915A /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD6F1A1C71594B0063915A /* BundleManager.swift */; };
 		8CDD6F1D1C71594B0063915A /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD6F1A1C71594B0063915A /* BundleManager.swift */; };
@@ -131,6 +128,22 @@
 		8CEEC0E21C411F9700BF3E85 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEEC0E11C411F9700BF3E85 /* Repository.swift */; };
 		8CEEC0E31C411F9700BF3E85 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEEC0E11C411F9700BF3E85 /* Repository.swift */; };
 		8CEEC0E41C411F9700BF3E85 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEEC0E11C411F9700BF3E85 /* Repository.swift */; };
+		CC4CEC6025DFA49E00B7B617 /* BackReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CEC5F25DFA49E00B7B617 /* BackReferenceTests.swift */; };
+		CC4CEC6125DFA49E00B7B617 /* BackReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CEC5F25DFA49E00B7B617 /* BackReferenceTests.swift */; };
+		CC4CEC6225DFA49E00B7B617 /* BackReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CEC5F25DFA49E00B7B617 /* BackReferenceTests.swift */; };
+		CC4CEC7025DFD11200B7B617 /* Lua.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */; };
+		CC4CEC7525DFD11200B7B617 /* Lua.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */; };
+		CC4CEC7A25DFD11300B7B617 /* Lua.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */; };
+		CC4CEC9525DFD28C00B7B617 /* test.lua.txt in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC9325DFD28C00B7B617 /* test.lua.txt */; };
+		CC4CEC9625DFD28C00B7B617 /* test.lua.txt in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC9325DFD28C00B7B617 /* test.lua.txt */; };
+		CC4CEC9725DFD28C00B7B617 /* test.lua.txt in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC9325DFD28C00B7B617 /* test.lua.txt */; };
+		CC4CEC9825DFD28C00B7B617 /* test.tex.txt in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC9425DFD28C00B7B617 /* test.tex.txt */; };
+		CC4CEC9925DFD28C00B7B617 /* test.tex.txt in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC9425DFD28C00B7B617 /* test.tex.txt */; };
+		CC4CEC9A25DFD28C00B7B617 /* test.tex.txt in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC9425DFD28C00B7B617 /* test.tex.txt */; };
+		CC4CECBB25DFD95D00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
+		CC4CECC025DFD95D00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
+		CC4CECC525DFD95E00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
+		CC4CECCA25DFD95E00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,15 +231,14 @@
 		2122A6DE1B22B9320006409B /* SyntaxKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SyntaxKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2122A6E91B22B9320006409B /* SyntaxKitTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SyntaxKitTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2198CECA1B36D5D700BD463F /* SyntaxKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SyntaxKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C08C3C61C36FD6D00D8548F /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ../Color.swift; sourceTree = "<group>"; };
+		8C08C3C61C36FD6D00D8548F /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8C10B6431CC38E5200740E00 /* AttributedParsingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AttributedParsingOperation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8C4D09BF1E1EAF750034974A /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		8C4D09C31E1EB0670034974A /* Latex.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Latex.tmLanguage; sourceTree = "<group>"; };
 		8C4D09C71E1EB07D0034974A /* Tex.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tex.tmLanguage; sourceTree = "<group>"; };
-		8C4D09CB1E1EB16C0034974A /* textest.tex.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = textest.tex.txt; sourceTree = "<group>"; };
 		8C71A05C1C59587700041EC6 /* IncrementalParsingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementalParsingTests.swift; sourceTree = "<group>"; };
 		8C9003321C5C0B0D00CBA5B0 /* ScopedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScopedString.swift; sourceTree = "<group>"; };
-		8CB2FD221C4D877D008ECD6D /* swifttest.swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = swifttest.swift.txt; sourceTree = "<group>"; };
+		8CB2FD221C4D877D008ECD6D /* test.swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.swift.txt; sourceTree = "<group>"; };
 		8CB2FD251C4D87D6008ECD6D /* Solarized.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Solarized.tmTheme; sourceTree = "<group>"; };
 		8CDD6F1A1C71594B0063915A /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BundleManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8CE64FE21C74B48D0007BA57 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Language.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -235,6 +247,11 @@
 		8CE8D1161C4EBF8F005A86B3 /* SwiftBaselineHighlightingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBaselineHighlightingTests.swift; sourceTree = "<group>"; };
 		8CEEC0DD1C411C8600BF3E85 /* ReferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ReferenceManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8CEEC0E11C411F9700BF3E85 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Repository.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CC4CEC5F25DFA49E00B7B617 /* BackReferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackReferenceTests.swift; sourceTree = "<group>"; };
+		CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Lua.tmLanguage; sourceTree = "<group>"; };
+		CC4CEC9325DFD28C00B7B617 /* test.lua.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.lua.txt; sourceTree = "<group>"; };
+		CC4CEC9425DFD28C00B7B617 /* test.tex.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.tex.txt; sourceTree = "<group>"; };
+		CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,7 +313,6 @@
 		210299C11B2E8924009C61EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8C08C3C61C36FD6D00D8548F /* Color.swift */,
 				210299C21B2E8924009C61EE /* Info.plist */,
 			);
 			path = Resources;
@@ -308,6 +324,7 @@
 				210299E11B2E8AFC009C61EE /* Resources */,
 				211989821B2EB18000F0D786 /* TestHelper.swift */,
 				211989881B2EB8D400F0D786 /* ParserTests.swift */,
+				CC4CEC5F25DFA49E00B7B617 /* BackReferenceTests.swift */,
 				210299D01B2E8924009C61EE /* AttributedParserTests.swift */,
 				8C4D09BF1E1EAF750034974A /* PerformanceTests.swift */,
 				8CE8D1161C4EBF8F005A86B3 /* SwiftBaselineHighlightingTests.swift */,
@@ -331,16 +348,18 @@
 		210299E21B2E8AFC009C61EE /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */,
 				210BF26F1B37C0A2008AA4F0 /* Ruby.tmLanguage */,
 				8CE8D1131C4EBF58005A86B3 /* Swift.tmLanguage */,
 				8C4D09C31E1EB0670034974A /* Latex.tmLanguage */,
 				8C4D09C71E1EB07D0034974A /* Tex.tmLanguage */,
-				8CB2FD221C4D877D008ECD6D /* swifttest.swift.txt */,
-				8C4D09CB1E1EB16C0034974A /* textest.tex.txt */,
-				210BF26C1B37C04E008AA4F0 /* test.rb.txt */,
 				8CB2FD251C4D87D6008ECD6D /* Solarized.tmTheme */,
 				2119897E1B2EAF0900F0D786 /* Tomorrow.tmTheme */,
 				2119897F1B2EAF0900F0D786 /* Yaml.tmLanguage */,
+				8CB2FD221C4D877D008ECD6D /* test.swift.txt */,
+				210BF26C1B37C04E008AA4F0 /* test.rb.txt */,
+				CC4CEC9325DFD28C00B7B617 /* test.lua.txt */,
+				CC4CEC9425DFD28C00B7B617 /* test.tex.txt */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -385,6 +404,8 @@
 				211989921B2EC38B00F0D786 /* Pattern.swift */,
 				2119898E1B2EC38B00F0D786 /* CaptureCollection.swift */,
 				2119898D1B2EC38B00F0D786 /* Capture.swift */,
+				8C08C3C61C36FD6D00D8548F /* Color.swift */,
+				CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */,
 				210299C11B2E8924009C61EE /* Resources */,
 				210299CD1B2E8924009C61EE /* Tests */,
 			);
@@ -566,7 +587,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Sam Soffes";
 				TargetAttributes = {
 					211826D91D257A71003F2BF2 = {
@@ -585,9 +606,11 @@
 					};
 					2122A6DD1B22B9320006409B = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 1240;
 					};
 					2122A6E81B22B9320006409B = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 1240;
 					};
 					2198CEC91B36D5D700BD463F = {
 						CreatedOnToolsVersion = 7.0;
@@ -631,15 +654,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C2EB3611D4B525A005ECE2B /* Swift.tmLanguage in Resources */,
-				8C2EB3621D4B525A005ECE2B /* swifttest.swift.txt in Resources */,
+				8C2EB3621D4B525A005ECE2B /* test.swift.txt in Resources */,
 				8C2EB3631D4B525A005ECE2B /* Solarized.tmTheme in Resources */,
 				8C4D09CA1E1EB07D0034974A /* Tex.tmLanguage in Resources */,
+				CC4CEC7A25DFD11300B7B617 /* Lua.tmLanguage in Resources */,
 				211826FF1D257A8A003F2BF2 /* Ruby.tmLanguage in Resources */,
 				8C4D09C61E1EB0670034974A /* Latex.tmLanguage in Resources */,
 				211827021D257A8A003F2BF2 /* Yaml.tmLanguage in Resources */,
 				211827001D257A8A003F2BF2 /* test.rb.txt in Resources */,
+				CC4CEC9A25DFD28C00B7B617 /* test.tex.txt in Resources */,
 				211827011D257A8A003F2BF2 /* Tomorrow.tmTheme in Resources */,
-				8C4D09CE1E1EB16C0034974A /* textest.tex.txt in Resources */,
+				CC4CEC9725DFD28C00B7B617 /* test.lua.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,12 +683,14 @@
 				210BF2711B37C0A2008AA4F0 /* Ruby.tmLanguage in Resources */,
 				211989CA1B2EC40900F0D786 /* Yaml.tmLanguage in Resources */,
 				8C4D09C91E1EB07D0034974A /* Tex.tmLanguage in Resources */,
+				CC4CEC7525DFD11200B7B617 /* Lua.tmLanguage in Resources */,
 				211989C91B2EC40900F0D786 /* Tomorrow.tmTheme in Resources */,
 				8C4D09C51E1EB0670034974A /* Latex.tmLanguage in Resources */,
 				8CB2FD271C4D87D6008ECD6D /* Solarized.tmTheme in Resources */,
 				210BF26E1B37C04E008AA4F0 /* test.rb.txt in Resources */,
-				8CB2FD281C4D891A008ECD6D /* swifttest.swift.txt in Resources */,
-				8C4D09CD1E1EB16C0034974A /* textest.tex.txt in Resources */,
+				CC4CEC9925DFD28C00B7B617 /* test.tex.txt in Resources */,
+				8CB2FD281C4D891A008ECD6D /* test.swift.txt in Resources */,
+				CC4CEC9625DFD28C00B7B617 /* test.lua.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,12 +709,14 @@
 				210BF2701B37C0A2008AA4F0 /* Ruby.tmLanguage in Resources */,
 				211989811B2EAF0900F0D786 /* Yaml.tmLanguage in Resources */,
 				8C4D09C81E1EB07D0034974A /* Tex.tmLanguage in Resources */,
+				CC4CEC7025DFD11200B7B617 /* Lua.tmLanguage in Resources */,
 				211989801B2EAF0900F0D786 /* Tomorrow.tmTheme in Resources */,
 				8C4D09C41E1EB0670034974A /* Latex.tmLanguage in Resources */,
 				8CB2FD261C4D87D6008ECD6D /* Solarized.tmTheme in Resources */,
 				210BF26D1B37C04E008AA4F0 /* test.rb.txt in Resources */,
-				8CAEC6BA1D3BB297001C57D3 /* swifttest.swift.txt in Resources */,
-				8C4D09CC1E1EB16C0034974A /* textest.tex.txt in Resources */,
+				CC4CEC9825DFD28C00B7B617 /* test.tex.txt in Resources */,
+				8CAEC6BA1D3BB297001C57D3 /* test.swift.txt in Resources */,
+				CC4CEC9525DFD28C00B7B617 /* test.lua.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,6 +762,7 @@
 				211826F21D257A7E003F2BF2 /* Capture.swift in Sources */,
 				211826F51D257A7E003F2BF2 /* Parser.swift in Sources */,
 				211826F71D257A7E003F2BF2 /* Result.swift in Sources */,
+				CC4CECCA25DFD95E00B7B617 /* RegularExpression.swift in Sources */,
 				211826F81D257A7E003F2BF2 /* ResultSet.swift in Sources */,
 				211826F31D257A7E003F2BF2 /* CaptureCollection.swift in Sources */,
 				211826F11D257A7E003F2BF2 /* AttributedParser.swift in Sources */,
@@ -745,6 +775,7 @@
 			files = (
 				8C2EB35E1D4B524F005ECE2B /* SwiftBaselineHighlightingTests.swift in Sources */,
 				8C2EB35F1D4B524F005ECE2B /* IncrementalParsingTests.swift in Sources */,
+				CC4CEC6225DFA49E00B7B617 /* BackReferenceTests.swift in Sources */,
 				8C2EB3601D4B524F005ECE2B /* ScopedStringTests.swift in Sources */,
 				211826FD1D257A84003F2BF2 /* LanguageTests.swift in Sources */,
 				211826FA1D257A84003F2BF2 /* TestHelper.swift in Sources */,
@@ -771,6 +802,7 @@
 				211989C51B2EC40500F0D786 /* Pattern.swift in Sources */,
 				211989C81B2EC40500F0D786 /* Theme.swift in Sources */,
 				211989C61B2EC40500F0D786 /* Result.swift in Sources */,
+				CC4CECC025DFD95D00B7B617 /* RegularExpression.swift in Sources */,
 				8CE64FE41C74B48D0007BA57 /* Language.swift in Sources */,
 				211989BF1B2EC40500F0D786 /* AttributedParser.swift in Sources */,
 				8CEEC0E31C411F9700BF3E85 /* Repository.swift in Sources */,
@@ -783,6 +815,7 @@
 			files = (
 				211989CF1B2EC40C00F0D786 /* ThemeTests.swift in Sources */,
 				211989CC1B2EC40C00F0D786 /* ParserTests.swift in Sources */,
+				CC4CEC6125DFA49E00B7B617 /* BackReferenceTests.swift in Sources */,
 				8CE6BE2F1C5D1BBA002676BD /* ScopedStringTests.swift in Sources */,
 				8C71A05E1C59587700041EC6 /* IncrementalParsingTests.swift in Sources */,
 				211989CE1B2EC40C00F0D786 /* LanguageTests.swift in Sources */,
@@ -809,6 +842,7 @@
 				2119899D1B2EC38B00F0D786 /* Pattern.swift in Sources */,
 				211989A11B2EC38B00F0D786 /* Theme.swift in Sources */,
 				2119899E1B2EC38B00F0D786 /* Result.swift in Sources */,
+				CC4CECBB25DFD95D00B7B617 /* RegularExpression.swift in Sources */,
 				8C9003331C5C0B0D00CBA5B0 /* ScopedString.swift in Sources */,
 				211989971B2EC38B00F0D786 /* AttributedParser.swift in Sources */,
 				8CE64FE31C74B48D0007BA57 /* Language.swift in Sources */,
@@ -821,6 +855,7 @@
 			files = (
 				211989841B2EB18600F0D786 /* TestHelper.swift in Sources */,
 				8C71A05D1C59587700041EC6 /* IncrementalParsingTests.swift in Sources */,
+				CC4CEC6025DFA49E00B7B617 /* BackReferenceTests.swift in Sources */,
 				211989891B2EB8D400F0D786 /* ParserTests.swift in Sources */,
 				210299DF1B2E892E009C61EE /* AttributedParserTests.swift in Sources */,
 				8CE6BE2E1C5D1BBA002676BD /* ScopedStringTests.swift in Sources */,
@@ -847,6 +882,7 @@
 				8C10B6481CC3938100740E00 /* Color.swift in Sources */,
 				8C10B6491CC393E700740E00 /* ScopedString.swift in Sources */,
 				2198CED81B36D5DE00BD463F /* Pattern.swift in Sources */,
+				CC4CECC525DFD95E00B7B617 /* RegularExpression.swift in Sources */,
 				2198CEDB1B36D5DE00BD463F /* Theme.swift in Sources */,
 				2198CED91B36D5DE00BD463F /* Result.swift in Sources */,
 				2198CED21B36D5DE00BD463F /* AttributedParser.swift in Sources */,
@@ -893,7 +929,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -916,7 +952,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -933,7 +969,7 @@
 				PRODUCT_NAME = SyntaxKitTests;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -949,7 +985,7 @@
 				PRODUCT_NAME = SyntaxKitTests;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -957,7 +993,7 @@
 		211989B91B2EC3B600F0D786 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -966,7 +1002,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/SyntaxKit/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.syntaxkit;
 				PRODUCT_NAME = SyntaxKit;
@@ -980,7 +1016,7 @@
 		211989BA1B2EC3B600F0D786 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -989,7 +1025,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/SyntaxKit/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.syntaxkit;
 				PRODUCT_NAME = SyntaxKit;
@@ -1008,7 +1044,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SyntaxKit/Tests/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.syntaxkit-ios.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1024,7 +1060,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SyntaxKit/Tests/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.syntaxkit-ios.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1058,6 +1094,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1084,8 +1121,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1120,6 +1157,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1140,8 +1178,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1171,7 +1209,7 @@
 				PRODUCT_NAME = SyntaxKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1194,7 +1232,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.syntaxkit;
 				PRODUCT_NAME = SyntaxKit;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1216,7 +1254,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.syntaxkit-macos.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1234,7 +1272,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.syntaxkit-macos.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

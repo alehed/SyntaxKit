@@ -25,11 +25,11 @@ internal class Pattern: NSObject {
     // MARK: - Properties
 
     var name: String? { return _name }
-    var match: NSRegularExpression? { return _match }
+    var match: RegularExpression? { return _match }
     var captures: CaptureCollection? { return _captures }
-    var begin: NSRegularExpression? { return _begin }
+    var begin: RegularExpression? { return _begin }
     var beginCaptures: CaptureCollection? { return _beginCaptures }
-    var end: NSRegularExpression? { return _end }
+    var end: RegularExpression? { return _end }
     var endCaptures: CaptureCollection? { return _endCaptures }
     var applyEndPatternLast: Bool { return _applyEndPatternLast }
     var parent: Pattern? { return _parent }
@@ -37,11 +37,11 @@ internal class Pattern: NSObject {
 
     // swiftlint:disable strict_fileprivate
     fileprivate var _name: String?
-    fileprivate var _match: NSRegularExpression?
+    fileprivate var _match: RegularExpression?
     fileprivate var _captures: CaptureCollection?
-    fileprivate var _begin: NSRegularExpression?
+    fileprivate var _begin: RegularExpression?
     fileprivate var _beginCaptures: CaptureCollection?
-    fileprivate var _end: NSRegularExpression?
+    fileprivate var _end: RegularExpression?
     fileprivate var _endCaptures: CaptureCollection?
     fileprivate var _applyEndPatternLast: Bool = false
     fileprivate weak var _parent: Pattern?
@@ -55,15 +55,15 @@ internal class Pattern: NSObject {
         _name = dictionary["name"] as? String
 
         if let matchExpr = dictionary["match"] as? String {
-            _match = try? NSRegularExpression(pattern: matchExpr, options: [.anchorsMatchLines])
+            _match = try? RegularExpression(pattern: matchExpr, options: [.anchorsMatchLines])
         }
 
         if let beginExpr = dictionary["begin"] as? String {
-            _begin = try? NSRegularExpression(pattern: beginExpr, options: [.anchorsMatchLines])
+            _begin = try? RegularExpression(pattern: beginExpr, options: [.anchorsMatchLines])
         }
 
         if let endExpr = dictionary["end"] as? String {
-            _end = try? NSRegularExpression(pattern: endExpr, options: [.anchorsMatchLines])
+            _end = try? RegularExpression(pattern: endExpr, options: [.anchorsMatchLines])
         }
 
         _applyEndPatternLast = dictionary["applyEndPatternLast"] as? Bool ?? false

@@ -66,7 +66,7 @@ open class Parser {
 
         while startIndex < endIndex {
             let endPattern = endScope.attribute as? Pattern ?? language.pattern
-            guard let results = self.matchSubpatterns(of: endPattern, in: NSRange(location: startIndex, length: endIndex - startIndex)) else {
+            guard let results = self.matchSubpatterns(of: endPattern, in: NSRange(location: startIndex, length: endIndex - startIndex), beginResults: nil) else {
                 return
             }
 
@@ -115,7 +115,7 @@ open class Parser {
     ///
     /// - returns:  The result set containing the lexical scope names with range
     ///             information or nil if aborted. May exceed range.
-    private func matchSubpatterns(of pattern: Pattern, in range: NSRange) -> ResultSet? {
+    private func matchSubpatterns(of pattern: Pattern, in range: NSRange, beginResults begin: ResultSet?) -> ResultSet? {
         let stop = range.location + range.length
         var lineStart = range.location
         var lineEnd = range.location
@@ -130,23 +130,24 @@ open class Parser {
                     return nil
                 }
 
-                let bestMatchForMiddle = match(pattern.subpatterns, in: range)
+                let bestMatchForMiddle = self.match(pattern.subpatterns, in: range)
 
-                if let patternEnd = pattern.end,
-                    let endMatchResult = self.match(patternEnd, in: range, captures: pattern.endCaptures) {
-                    if let middleMatch = bestMatchForMiddle {
-                        if !pattern.applyEndPatternLast && endMatchResult.range.location <= middleMatch.match.range.location || endMatchResult.range.location < middleMatch.match.range.location {
+                if let patternEnd = pattern.end {
+                    if let endMatchResult = self.match(expandBackReferences(from: patternEnd, beginResults: begin), in: range, captures: pattern.endCaptures) {
+                        if let middleMatch = bestMatchForMiddle {
+                            if !pattern.applyEndPatternLast && endMatchResult.range.location <= middleMatch.match.range.location || endMatchResult.range.location < middleMatch.match.range.location {
+                                result.add(endMatchResult)
+                                return result
+                            }
+                        } else {
                             result.add(endMatchResult)
                             return result
                         }
-                    } else {
-                        result.add(endMatchResult)
-                        return result
                     }
                 }
 
                 guard let middleMatch = bestMatchForMiddle,
-                    let middleResult = middleMatch.pattern.match != nil ? middleMatch.match : matchAfterBegin(of: middleMatch.pattern, beginResults: middleMatch.match) else {
+                      let middleResult = middleMatch.pattern.match != nil ? middleMatch.match : matchAfterBegin(of: middleMatch.pattern, beginResults: middleMatch.match) else {
                     break
                 }
                 if middleResult.range.length == 0 {
@@ -178,7 +179,7 @@ open class Parser {
         var interestingBounds = range
         var bestResult: (pattern: Pattern, match: ResultSet)?
         for pattern in patterns {
-            let currentMatch = self.firstMatch(of: pattern, in: range)
+            let currentMatch = self.firstMatch(of: pattern, in: range, beginResults: bestResult?.match)
             if currentMatch?.match.range.location == range.location {
                 return currentMatch
             } else if let currMatch = currentMatch {
@@ -202,19 +203,19 @@ open class Parser {
     /// - parameter range:      The range in which to match the pattern
     ///
     /// - returns: The matched pattern and the matching result. Nil on failure.
-    private func firstMatch(of pattern: Pattern, in range: NSRange) -> (pattern: Pattern, match: ResultSet)? {
+    private func firstMatch(of pattern: Pattern, in range: NSRange, beginResults begin: ResultSet?) -> (pattern: Pattern, match: ResultSet)? {
         if let expression = pattern.match {
-            if let resultSet = match(expression, in: range, captures: pattern.captures, baseSelector: pattern.name) {
+            if let resultSet = self.match(expandBackReferences(from: expression, beginResults: begin), in: range, captures: pattern.captures, baseSelector: pattern.name) {
                 if resultSet.range.length != 0 {
                     return (pattern, resultSet)
                 }
             }
         } else if let begin = pattern.begin {
-            if let beginResults = match(begin, in: range, captures: pattern.beginCaptures) {
+            if let beginResults = self.match(begin, in: range, captures: pattern.beginCaptures) {
                 return (pattern, beginResults)
             }
         } else if pattern.subpatterns.count >= 1 {
-            return match(pattern.subpatterns, in: range)
+            return self.match(pattern.subpatterns, in: range)
         }
         return nil
     }
@@ -230,19 +231,19 @@ open class Parser {
     /// - parameter begin:      The match result of the beginning
     /// - returns:  The result of matching the given pattern or nil on abortion.
     private func matchAfterBegin(of pattern: Pattern, beginResults begin: ResultSet) -> ResultSet? {
-            let newLocation = NSMaxRange(begin.range)
-            guard let endResults = matchSubpatterns(of: pattern, in: NSRange(location: newLocation, length: (toParse.string as NSString).length - newLocation)) else {
-                return nil
-            }
+        let newLocation = NSMaxRange(begin.range)
+        guard let endResults = matchSubpatterns(of: pattern, in: NSRange(location: newLocation, length: (toParse.string as NSString).length - newLocation), beginResults: begin) else {
+            return nil
+        }
 
-            let result = ResultSet(startingRange: endResults.range)
-            if let patternName = pattern.name {
-                result.add(Result(identifier: patternName, range: NSUnionRange(begin.range, endResults.range)))
-            }
-            result.add(Scope(identifier: pattern.name ?? "", range: NSRange(location: begin.range.location + begin.range.length, length: NSUnionRange(begin.range, endResults.range).length - begin.range.length), attribute: pattern))
-            result.add(begin)
-            result.add(endResults)
-            return result
+        let result = ResultSet(startingRange: endResults.range)
+        if let patternName = pattern.name {
+            result.add(Result(identifier: patternName, range: NSUnionRange(begin.range, endResults.range)))
+        }
+        result.add(Scope(identifier: pattern.name ?? "", range: NSRange(location: begin.range.location + begin.range.length, length: NSUnionRange(begin.range, endResults.range).length - begin.range.length), attribute: pattern))
+        result.add(begin)
+        result.add(endResults)
+        return result
     }
 
     /// Matches a given regular expression in the String and returns range
@@ -258,14 +259,14 @@ open class Parser {
     /// - returns:  The set containing the results. May be nil if the expression
     ///             could not match any part of the string. It may also be empty
     ///             and only contain range information to show what it matched.
-    private func match(_ expression: NSRegularExpression, in range: NSRange, captures: CaptureCollection?, baseSelector: String? = nil) -> ResultSet? {
+    private func match(_ expression: RegularExpression, in range: NSRange, captures: CaptureCollection?, baseSelector: String? = nil) -> ResultSet? {
         guard let result = expression.firstMatch(in: toParse.string, options: [.withTransparentBounds], range: range) else {
             return nil
         }
 
         let resultSet = ResultSet(startingRange: result.range)
         if let base = baseSelector {
-            resultSet.add(Result(identifier: base, range: result.range))
+            resultSet.add(Result(identifier: base, range: result.range, result: result))
         }
 
         if let captures = captures {
@@ -278,9 +279,9 @@ open class Parser {
                 if range.location == NSNotFound {
                     continue
                 }
-
+                
                 if let scope = captures[index]?.name {
-                    resultSet.add(Result(identifier: scope, range: range))
+                    resultSet.add(Result(identifier: scope, range: range, result: result))
                 }
             }
         }
@@ -302,5 +303,25 @@ open class Parser {
                 callback(result.patternIdentifier, result.range)
             }
         }
+    }
+
+    /// Expand all back references in a regular expression string.
+    ///
+    /// - parameter regex:      The regular expression string with back reference placeholders (patternEnd only)
+    /// - parameter begin:      The match result of the beginning
+    ///
+    /// - returns:  The regular expression string with its back reference placeholders expanded.
+    private func expandBackReferences(from regex: RegularExpression, beginResults begin: ResultSet?) -> RegularExpression {
+        guard regex.isTemplate,
+              let begin = begin,
+              let result = begin.results.first?.result else {
+            return regex
+        }
+        return (
+            try? RegularExpression(
+                pattern: regex.pattern.removingBackReferencePlaceholders(content: toParse.string, matches: result),
+                options: regex.options
+            )
+        ) ?? regex
     }
 }

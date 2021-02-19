@@ -27,7 +27,7 @@ internal class PerformanceTests: XCTestCase {
     }
 
     func testLongTexFilePerformance() {
-        let input = fixture("textest.tex", "txt")
+        let input = fixture("test.tex", "txt")
         self.measure {
             _ = self.parser?.attributedString(for: input)
         }

@@ -30,7 +30,7 @@ internal class SwiftBaselineHighlightingTests: XCTestCase {
     }
 
     func testColors() {
-        let input = fixture("swifttest.swift", "txt")
+        let input = fixture("test.swift", "txt")
         if let string = parser?.attributedString(for: input) {
             // line comment
             assertEqualColors(Color(hex: "#93A1A1"), string.attributes(at: 10, effectiveRange: nil)[NSAttributedString.Key.foregroundColor] as? Color)
@@ -59,7 +59,7 @@ internal class SwiftBaselineHighlightingTests: XCTestCase {
     }
 
     func testHighlightingPerformance() {
-        let input = fixture("swifttest.swift", "txt")
+        let input = fixture("test.swift", "txt")
         self.measure {
             _ = self.parser?.attributedString(for: input)
         }
