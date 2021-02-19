@@ -37,10 +37,16 @@ open class BundleManager {
     ///         has to be done separately using clearLanguageCache.
     open var languageCaching: Bool = true
 
+    /// You probably want to leave the themeCaching property set to true.
+    ///
+    /// - note: Setting it to false will not invalidate or purge the cache. This
+    ///         has to be done separately using clearThemeCache.
+    open var themeCaching: Bool = true
+
     public static var defaultManager: BundleManager?
 
     private var bundleCallback: BundleLocationCallback
-    private var dependencies: [Language] = []
+    private var languageDependencies: [Language] = []
     private var cachedLanguages: [String: Language] = [:]
     private var cachedThemes: [String: Theme] = [:]
 
@@ -70,16 +76,17 @@ open class BundleManager {
             return language
         }
 
-        self.dependencies = []
-        var language = self.loadRawLanguage(withIdentifier: identifier)
-        language?.validate(with: self.dependencies)
-
-        if languageCaching && language != nil {
-            self.cachedLanguages[identifier] = language
+        self.languageDependencies.removeAll()
+        guard var newLanguage = self.includeLanguage(withIdentifier: identifier) else {
+            return nil
         }
+        newLanguage.validate(with: self.languageDependencies)
 
-        self.dependencies = []
-        return language
+        if languageCaching {
+            self.cachedLanguages[identifier] = newLanguage
+        }
+        self.languageDependencies.removeAll()
+        return newLanguage
     }
 
     open func theme(withIdentifier identifier: String) -> Theme? {
@@ -93,24 +100,28 @@ open class BundleManager {
                 return nil
         }
 
-        cachedThemes[identifier] = newTheme
+        if themeCaching {
+            self.cachedThemes[identifier] = newTheme
+        }
         return newTheme
     }
 
-    /// Clears the language cache. Use if low on memory.
-    open func clearLanguageCache() {
-        self.cachedLanguages = [:]
+    /// Use if low on memory.
+    open func clearCaches() {
+        self.cachedLanguages.removeAll()
+        self.cachedThemes.removeAll()
     }
 
     // MARK: - Internal Interface
 
     /// - parameter identifier: The identifier of the requested language.
     /// - returns:  The Language with unresolved extenal references, if found
-    func loadRawLanguage(withIdentifier identifier: String) -> Language? {
-        let indexOfStoredLanguage = self.dependencies.firstIndex { (lang: Language) in lang.scopeName == identifier }
+    @discardableResult
+    func includeLanguage(withIdentifier identifier: String) -> Language? {
+        let indexOfStoredLanguage = self.languageDependencies.firstIndex { $0.scopeName == identifier }
 
         if let index = indexOfStoredLanguage {
-            return self.dependencies[index]
+            return self.languageDependencies[index]
         } else {
             guard let dictURL = self.bundleCallback(identifier, .language),
                 let plist = NSDictionary(contentsOf: dictURL) as? [String: Any],
@@ -118,7 +129,7 @@ open class BundleManager {
                     return nil
             }
 
-            self.dependencies.append(newLanguage)
+            self.languageDependencies.append(newLanguage)
             return newLanguage
         }
     }

@@ -131,7 +131,6 @@
 		CC4CEC6025DFA49E00B7B617 /* BackReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CEC5F25DFA49E00B7B617 /* BackReferenceTests.swift */; };
 		CC4CEC6125DFA49E00B7B617 /* BackReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CEC5F25DFA49E00B7B617 /* BackReferenceTests.swift */; };
 		CC4CEC6225DFA49E00B7B617 /* BackReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CEC5F25DFA49E00B7B617 /* BackReferenceTests.swift */; };
-		CC4CEC7025DFD11200B7B617 /* Lua.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */; };
 		CC4CEC7525DFD11200B7B617 /* Lua.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */; };
 		CC4CEC7A25DFD11300B7B617 /* Lua.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */; };
 		CC4CEC9525DFD28C00B7B617 /* test.lua.txt in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC9325DFD28C00B7B617 /* test.lua.txt */; };
@@ -144,6 +143,7 @@
 		CC4CECC025DFD95D00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
 		CC4CECC525DFD95E00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
 		CC4CECCA25DFD95E00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
+		CC4CED0F25DFFB7E00B7B617 /* Lua.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -708,8 +708,8 @@
 				8CE8D1141C4EBF58005A86B3 /* Swift.tmLanguage in Resources */,
 				210BF2701B37C0A2008AA4F0 /* Ruby.tmLanguage in Resources */,
 				211989811B2EAF0900F0D786 /* Yaml.tmLanguage in Resources */,
+				CC4CED0F25DFFB7E00B7B617 /* Lua.tmLanguage in Resources */,
 				8C4D09C81E1EB07D0034974A /* Tex.tmLanguage in Resources */,
-				CC4CEC7025DFD11200B7B617 /* Lua.tmLanguage in Resources */,
 				211989801B2EAF0900F0D786 /* Tomorrow.tmTheme in Resources */,
 				8C4D09C41E1EB0670034974A /* Latex.tmLanguage in Resources */,
 				8CB2FD261C4D87D6008ECD6D /* Solarized.tmTheme in Resources */,
@@ -927,7 +927,6 @@
 				PRODUCT_NAME = SyntaxKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -950,7 +949,6 @@
 				PRODUCT_NAME = SyntaxKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALIDATE_PRODUCT = YES;
@@ -968,7 +966,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.syntaxkit.tvos.tests;
 				PRODUCT_NAME = SyntaxKitTests;
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
@@ -984,7 +981,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.syntaxkit.tvos.tests;
 				PRODUCT_NAME = SyntaxKitTests;
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1008,7 +1004,6 @@
 				PRODUCT_NAME = SyntaxKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1031,7 +1026,6 @@
 				PRODUCT_NAME = SyntaxKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1049,7 +1043,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.syntaxkit-ios.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1065,7 +1058,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.syntaxkit-ios.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1127,7 +1119,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1183,7 +1175,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1209,7 +1201,6 @@
 				PRODUCT_NAME = SyntaxKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1232,7 +1223,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.syntaxkit;
 				PRODUCT_NAME = SyntaxKit;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1254,7 +1244,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.syntaxkit-macos.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1272,7 +1261,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.syntaxkit-macos.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1293,7 +1281,6 @@
 				PRODUCT_NAME = SyntaxKit;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1316,7 +1303,6 @@
 				PRODUCT_NAME = SyntaxKit;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;

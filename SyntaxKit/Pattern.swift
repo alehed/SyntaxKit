@@ -145,14 +145,14 @@ internal class Include: Pattern {
             if let hashRange = reference.range(of: "#") {
                 let languagePart = String(reference[..<hashRange.lowerBound])
                 self.type = .toForeignRepository(repositoryRef: String(reference[hashRange.upperBound...]), languageRef: languagePart)
-                _ = manager.loadRawLanguage(withIdentifier: languagePart)
+                manager.includeLanguage(withIdentifier: languagePart)
             } else {
                 assert(false)
                 type = .toSelf
             }
         } else {
             self.type = .toForeign(languageRef: reference)
-            _ = manager.loadRawLanguage(withIdentifier: reference)
+            manager.includeLanguage(withIdentifier: reference)
         }
         super.init()
         _parent = parent
