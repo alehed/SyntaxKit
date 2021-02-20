@@ -133,9 +133,9 @@ internal class Include: Pattern {
 
     var languageRef: String? {
         switch type {
-        case .toForeignRepository(let (repositoryRef, languageRef)):
+        case let .toForeignRepository(_, languageRef):
             return languageRef
-        case .toForeign(let languageRef):
+        case let .toForeign(languageRef):
             return languageRef
         default:
             return nil
@@ -177,7 +177,7 @@ internal class Include: Pattern {
     func resolveInternalReference(with repository: Repository, in language: Language) {
         let pattern: Pattern?
         switch type {
-        case .toRepository(let repositoryRef):
+        case let .toRepository(repositoryRef):
             pattern = (associatedRepository ?? repository)[repositoryRef]
         case .toSelf:
             pattern = language.pattern
@@ -201,9 +201,9 @@ internal class Include: Pattern {
             } else {
                 fatalError()
             }
-        case .toForeignRepository(let (repositoryRef, languageRef)):
+        case let .toForeignRepository(repositoryRef, languageRef):
             pattern = languages[languageRef]?.repository[repositoryRef]
-        case .toForeign(let languageRef):
+        case let .toForeign(languageRef):
             pattern = languages[languageRef]?.pattern
         default:
             return
