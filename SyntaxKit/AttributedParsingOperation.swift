@@ -18,6 +18,8 @@
 //  Copyright © 2016 Alexander Hedges. All rights reserved.
 //
 
+import Foundation
+
 /// Represents one change (insertion or deletion) between two strings
 internal struct Diff {
 

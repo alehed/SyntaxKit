@@ -10,6 +10,8 @@
 //  Copyright © 2014-2015 Sam Soffes. All rights reserved.
 //
 
+import Foundation
+
 open class Parser {
 
     // MARK: - Types

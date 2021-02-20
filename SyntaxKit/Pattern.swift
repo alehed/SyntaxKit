@@ -19,6 +19,8 @@
 //  Copyright © 2014-2015 Sam Soffes. All rights reserved.
 //
 
+import Foundation
+
 @objc(SKPattern)
 internal class Pattern: NSObject {
 

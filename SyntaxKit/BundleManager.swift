@@ -12,6 +12,8 @@
 //  Copyright © 2016 Alexander Hedges. All rights reserved.
 //
 
+import Foundation
+
 open class BundleManager {
 
     public enum TextMateFileType {

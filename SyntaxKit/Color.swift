@@ -6,7 +6,7 @@
 //  Copyright © 2015 Sam Soffes. All rights reserved.
 //
 
-#if os(OSX)
+#if os(macOS)
     import AppKit.NSColor
     public typealias ColorType = NSColor
 
