@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension String {
+internal extension String {
     var hasBackReferencePlaceholder: Bool {
         var escape = false
         let buf = cString(using: .utf8)!.dropLast()

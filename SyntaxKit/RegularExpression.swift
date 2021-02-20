@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RegularExpression {
+internal class RegularExpression {
 
     // MARK: - Properties
 
@@ -38,7 +38,7 @@ class RegularExpression {
 
 /* NSRegularExpression Implementation */
 
-extension RegularExpression {
+internal extension RegularExpression {
     struct Options : OptionSet {
         let rawValue: UInt
         init(rawValue: UInt) {
@@ -78,7 +78,7 @@ extension RegularExpression {
     }
 }
 
-extension RegularExpression {
+internal extension RegularExpression {
 
     var numberOfCaptureGroups: Int {
         return _expression?.numberOfCaptureGroups ?? 0
@@ -90,7 +90,7 @@ extension RegularExpression {
 
 }
 
-extension RegularExpression {
+internal extension RegularExpression {
 
     func enumerateMatches(in string: String, options: RegularExpression.MatchingOptions = [], range: NSRange, using block: (NSTextCheckingResult?, RegularExpression.MatchingFlags, UnsafeMutablePointer<ObjCBool>) -> Void) {
         _expression?.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: options.rawValue), range: range) { (result, flags, stop) in
@@ -118,7 +118,7 @@ extension RegularExpression {
 
 /* NSRegularExpression's find-and-replace methods, not used. */
 
-extension RegularExpression {
+internal extension RegularExpression {
 
     func stringByReplacingMatches(in string: String, options: RegularExpression.MatchingOptions = [], range: NSRange, withTemplate templ: String) -> String {
         fatalError("not supported")
