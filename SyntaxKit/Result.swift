@@ -25,7 +25,6 @@ internal struct Result: Equatable {
         self.result = result
         self.attribute = attribute
     }
-    
 }
 
 internal func == (lhs: Result, rhs: Result) -> Bool {

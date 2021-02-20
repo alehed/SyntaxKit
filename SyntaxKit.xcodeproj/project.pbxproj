@@ -144,6 +144,10 @@
 		CC4CECC525DFD95E00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
 		CC4CECCA25DFD95E00B7B617 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */; };
 		CC4CED0F25DFFB7E00B7B617 /* Lua.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = CC4CEC6725DFD10C00B7B617 /* Lua.tmLanguage */; };
+		CC6EA1D725E0FF6A00946ECB /* String+BackReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6EA1D625E0FF6A00946ECB /* String+BackReference.swift */; };
+		CC6EA1D825E0FF6A00946ECB /* String+BackReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6EA1D625E0FF6A00946ECB /* String+BackReference.swift */; };
+		CC6EA1D925E0FF6A00946ECB /* String+BackReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6EA1D625E0FF6A00946ECB /* String+BackReference.swift */; };
+		CC6EA1DA25E0FF6A00946ECB /* String+BackReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6EA1D625E0FF6A00946ECB /* String+BackReference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,6 +256,7 @@
 		CC4CEC9325DFD28C00B7B617 /* test.lua.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.lua.txt; sourceTree = "<group>"; };
 		CC4CEC9425DFD28C00B7B617 /* test.tex.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.tex.txt; sourceTree = "<group>"; };
 		CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
+		CC6EA1D625E0FF6A00946ECB /* String+BackReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+BackReference.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +411,7 @@
 				2119898D1B2EC38B00F0D786 /* Capture.swift */,
 				8C08C3C61C36FD6D00D8548F /* Color.swift */,
 				CC4CECA725DFD89B00B7B617 /* RegularExpression.swift */,
+				CC6EA1D625E0FF6A00946ECB /* String+BackReference.swift */,
 				210299C11B2E8924009C61EE /* Resources */,
 				210299CD1B2E8924009C61EE /* Tests */,
 			);
@@ -760,6 +766,7 @@
 				211826F91D257A7E003F2BF2 /* Theme.swift in Sources */,
 				211826F61D257A7E003F2BF2 /* Pattern.swift in Sources */,
 				211826F21D257A7E003F2BF2 /* Capture.swift in Sources */,
+				CC6EA1DA25E0FF6A00946ECB /* String+BackReference.swift in Sources */,
 				211826F51D257A7E003F2BF2 /* Parser.swift in Sources */,
 				211826F71D257A7E003F2BF2 /* Result.swift in Sources */,
 				CC4CECCA25DFD95E00B7B617 /* RegularExpression.swift in Sources */,
@@ -800,6 +807,7 @@
 				8C10B6451CC38E5200740E00 /* AttributedParsingOperation.swift in Sources */,
 				8CDD6F1C1C71594B0063915A /* BundleManager.swift in Sources */,
 				211989C51B2EC40500F0D786 /* Pattern.swift in Sources */,
+				CC6EA1D825E0FF6A00946ECB /* String+BackReference.swift in Sources */,
 				211989C81B2EC40500F0D786 /* Theme.swift in Sources */,
 				211989C61B2EC40500F0D786 /* Result.swift in Sources */,
 				CC4CECC025DFD95D00B7B617 /* RegularExpression.swift in Sources */,
@@ -840,6 +848,7 @@
 				2119899F1B2EC38B00F0D786 /* ResultSet.swift in Sources */,
 				8C10B6471CC3937F00740E00 /* Color.swift in Sources */,
 				2119899D1B2EC38B00F0D786 /* Pattern.swift in Sources */,
+				CC6EA1D725E0FF6A00946ECB /* String+BackReference.swift in Sources */,
 				211989A11B2EC38B00F0D786 /* Theme.swift in Sources */,
 				2119899E1B2EC38B00F0D786 /* Result.swift in Sources */,
 				CC4CECBB25DFD95D00B7B617 /* RegularExpression.swift in Sources */,
@@ -880,6 +889,7 @@
 				8CEEC0E41C411F9700BF3E85 /* Repository.swift in Sources */,
 				2198CEDA1B36D5DE00BD463F /* ResultSet.swift in Sources */,
 				8C10B6481CC3938100740E00 /* Color.swift in Sources */,
+				CC6EA1D925E0FF6A00946ECB /* String+BackReference.swift in Sources */,
 				8C10B6491CC393E700740E00 /* ScopedString.swift in Sources */,
 				2198CED81B36D5DE00BD463F /* Pattern.swift in Sources */,
 				CC4CECC525DFD95E00B7B617 /* RegularExpression.swift in Sources */,

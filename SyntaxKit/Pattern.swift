@@ -147,8 +147,7 @@ internal class Include: Pattern {
                 self.type = .toForeignRepository(repositoryRef: String(reference[hashRange.upperBound...]), languageRef: languagePart)
                 manager.includeLanguage(withIdentifier: languagePart)
             } else {
-                assert(false)
-                type = .toSelf
+                fatalError()
             }
         } else {
             self.type = .toForeign(languageRef: reference)
@@ -190,8 +189,7 @@ internal class Include: Pattern {
             if let base = baseName {
                 pattern = languages[base]?.pattern
             } else {
-                assert(false)
-                pattern = nil
+                fatalError()
             }
         case .toForeignRepository(let (repositoryRef, languageRef)):
             pattern = languages[languageRef]?.repository[repositoryRef]

@@ -257,7 +257,7 @@ internal struct ScopedString {
             for pattern in levels[level] {
                 let range = pattern.range
                 if range.length == 0 {
-                    assert(false)
+                    fatalError("empty range")
                 } else if range.length == 1 {
                     levelString = (levelString as NSString).replacingCharacters(in: range, with: "|")
                 } else {

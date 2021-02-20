@@ -31,8 +31,7 @@ internal class ReferenceManager {
 
     func patterns(for patterns: [[AnyHashable: Any]], in repository: Repository?, caller: Pattern?) -> [Pattern] {
         guard let manager = bundleManager else {
-            assert(false)
-            return []
+            fatalError("bundleManager not set")
         }
         var results: [Pattern] = []
         for rawPattern in patterns {
