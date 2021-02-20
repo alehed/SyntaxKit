@@ -46,7 +46,6 @@ open class BundleManager {
     public static var defaultManager: BundleManager?
 
     private var bundleCallback: BundleLocationCallback
-    private var languageDependencies: [Language] = []
     private var cachedLanguages: [String: Language] = [:]
     private var cachedThemes: [String: Theme] = [:]
 
@@ -76,16 +75,33 @@ open class BundleManager {
             return language
         }
 
-        self.languageDependencies.removeAll()
-        guard var newLanguage = self.includeLanguage(withIdentifier: identifier) else {
+        guard let newLanguage = includeLanguage(withIdentifier: identifier) else {
             return nil
         }
-        newLanguage.validate(with: self.languageDependencies)
+
+        var languageSet = Set<Language>(arrayLiteral: newLanguage)
+        var languageDependencies = [Language]()
+
+        while let language = languageSet.popFirst() {
+            languageDependencies.append(language)
+            for childLanguageRef in language.referencedLanguageRefs {
+                if languageDependencies.map({ $0.scopeName }).contains(childLanguageRef) {
+                    continue
+                }
+                guard let childLanguage = includeLanguage(withIdentifier: childLanguageRef) else {
+                    continue
+                }
+                languageSet.insert(childLanguage)
+            }
+        }
+
+        // Now we finally got all helper languages
+        newLanguage.validate(with: languageDependencies)
 
         if languageCaching {
             self.cachedLanguages[identifier] = newLanguage
         }
-        self.languageDependencies.removeAll()
+
         return newLanguage
     }
 
@@ -116,21 +132,12 @@ open class BundleManager {
 
     /// - parameter identifier: The identifier of the requested language.
     /// - returns:  The Language with unresolved extenal references, if found
-    @discardableResult
-    func includeLanguage(withIdentifier identifier: String) -> Language? {
-        let indexOfStoredLanguage = self.languageDependencies.firstIndex { $0.scopeName == identifier }
-
-        if let index = indexOfStoredLanguage {
-            return self.languageDependencies[index]
-        } else {
-            guard let dictURL = self.bundleCallback(identifier, .language),
-                let plist = NSDictionary(contentsOf: dictURL) as? [String: Any],
-                let newLanguage = Language(dictionary: plist, manager: self) else {
-                    return nil
-            }
-
-            self.languageDependencies.append(newLanguage)
-            return newLanguage
+    private func includeLanguage(withIdentifier identifier: String) -> Language? {
+        guard let dictURL = self.bundleCallback(identifier, .language),
+              let plist = NSDictionary(contentsOf: dictURL) as? [String: Any],
+              let newLanguage = Language(dictionary: plist, manager: self) else {
+            return nil
         }
+        return newLanguage
     }
 }

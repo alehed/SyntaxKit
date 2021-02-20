@@ -6,8 +6,6 @@
 //  Copyright © 2021 Sam Soffes. All rights reserved.
 //
 
-import Foundation
-
 internal extension String {
     var hasBackReferencePlaceholder: Bool {
         var escape = false

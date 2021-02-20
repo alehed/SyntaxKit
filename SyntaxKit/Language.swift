@@ -9,7 +9,17 @@
 //  Copyright © 2014-2015 Sam Soffes. All rights reserved.
 //
 
-public struct Language {
+public struct Language: Hashable {
+
+    public static func == (lhs: Language, rhs: Language) -> Bool {
+        return lhs.uuid == rhs.uuid && lhs.name == rhs.name && lhs.scopeName == rhs.scopeName
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+        hasher.combine(name)
+        hasher.combine(scopeName)
+    }
 
     // MARK: - Properties
 
@@ -20,6 +30,8 @@ public struct Language {
     let pattern: Pattern = Pattern()
     let referenceManager: ReferenceManager
     let repository: Repository
+
+    var referencedLanguageRefs: [String] { referenceManager.includedLanguageRefs }
 
     static let globalScope: String = "GLOBAL"
 
@@ -49,7 +61,7 @@ public struct Language {
     /// - parameter helperLanguages: The languages that the language has
     ///     references to resolve against. This should at least contain the
     ///     language itself.
-    mutating func validate(with helperLanguages: [Language]) {
+    func validate(with helperLanguages: [Language]) {
         ReferenceManager.resolveExternalReferences(between: helperLanguages, basename: self.scopeName)
     }
 }

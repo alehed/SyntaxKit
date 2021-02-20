@@ -131,9 +131,20 @@ internal class Include: Pattern {
     private var type: ReferenceType
     private var associatedRepository: Repository?
 
+    var languageRef: String? {
+        switch type {
+        case .toForeignRepository(let (repositoryRef, languageRef)):
+            return languageRef
+        case .toForeign(let languageRef):
+            return languageRef
+        default:
+            return nil
+        }
+    }
+
     // MARK: - Initializers
 
-    init(reference: String, in repository: Repository? = nil, parent: Pattern?, manager: BundleManager) {
+    init(reference: String, in repository: Repository? = nil, parent: Pattern?, manager: BundleManager /* not used */) {
         self.associatedRepository = repository
         if reference.hasPrefix("#") {
             self.type = .toRepository(repositoryRef: String(reference[reference.index(after: reference.startIndex)...]))
@@ -177,10 +188,11 @@ internal class Include: Pattern {
         if let pat = pattern {
             self.replace(with: pat)
         }
+
         type = .resolved
     }
 
-    func resolveExternalReference(from thisLanguage: Language, in languages: [String: Language], baseName: String?) {
+    func resolveExternalReference(from thisLanguage: Language /* not used */, in languages: [String: Language], baseName: String?) {
         let pattern: Pattern?
         switch type {
         case .toBase:
@@ -200,6 +212,7 @@ internal class Include: Pattern {
         if let pat = pattern {
             self.replace(with: pat)
         }
+        
         type = .resolved
     }
 

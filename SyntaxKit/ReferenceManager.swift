@@ -21,6 +21,10 @@ internal class ReferenceManager {
     private var includes: [Include] = []
     private weak var bundleManager: BundleManager?
 
+    var includedLanguageRefs: [String] {
+        return includes.compactMap { $0.languageRef }
+    }
+
     // MARK: - Init
 
     init(bundleManager: BundleManager) {

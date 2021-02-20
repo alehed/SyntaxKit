@@ -6,8 +6,6 @@
 //  Copyright © 2021 Sam Soffes. All rights reserved.
 //
 
-import Foundation
-
 internal class RegularExpression {
 
     // MARK: - Properties
