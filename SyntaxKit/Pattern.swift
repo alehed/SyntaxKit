@@ -118,13 +118,15 @@ internal class Pattern: NSObject {
 internal class Include: Pattern {
 
     // MARK: - Properties
+    
+    typealias LanguageAndRepository = (repositoryRef: String, languageRef: String)
 
     enum ReferenceType {
         case toRepository (repositoryRef: String)
         case toSelf
         case toBase
         case toForeign (languageRef: String)
-        case toForeignRepository (repositoryRef: String, languageRef: String)
+        case toForeignRepository (tuple: LanguageAndRepository)
         case resolved
     }
 
@@ -133,8 +135,8 @@ internal class Include: Pattern {
 
     var languageRef: String? {
         switch type {
-        case .toForeignRepository(let (repositoryRef, languageRef)):
-            return languageRef
+        case .toForeignRepository(let tuple):
+            return tuple.languageRef
         case .toForeign(let languageRef):
             return languageRef
         default:
@@ -155,7 +157,7 @@ internal class Include: Pattern {
         } else if reference.contains("#") {
             if let hashRange = reference.range(of: "#") {
                 let languagePart = String(reference[..<hashRange.lowerBound])
-                self.type = .toForeignRepository(repositoryRef: String(reference[hashRange.upperBound...]), languageRef: languagePart)
+                self.type = .toForeignRepository(tuple: (String(reference[hashRange.upperBound...]), languagePart))
             } else {
                 fatalError()
             }
@@ -201,8 +203,8 @@ internal class Include: Pattern {
             } else {
                 fatalError()
             }
-        case .toForeignRepository(let (repositoryRef, languageRef)):
-            pattern = languages[languageRef]?.repository[repositoryRef]
+        case .toForeignRepository(let tuple):
+            pattern = languages[tuple.languageRef]?.repository[tuple.repositoryRef]
         case .toForeign(let languageRef):
             pattern = languages[languageRef]?.pattern
         default:
