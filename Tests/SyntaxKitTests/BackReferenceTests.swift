@@ -3,7 +3,7 @@
 //  SyntaxKit
 //
 //  Created by Zheng Wu on 2021/2/19.
-//  Copyright © 2021 Sam Soffes. All rights reserved.
+//  Copyright © 2021 Zheng Wu. All rights reserved.
 //
 
 @testable import SyntaxKit
