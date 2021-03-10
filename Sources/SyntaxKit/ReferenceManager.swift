@@ -66,7 +66,7 @@ internal class ReferenceManager {
         for language in languages {
             let includes = language.referenceManager.includes
             for include in includes {
-                include.resolveExternalReference(from: language, in: otherLanguages, baseName: basename)
+                include.resolveExternalReference(in: otherLanguages, baseName: basename)
             }
         }
     }

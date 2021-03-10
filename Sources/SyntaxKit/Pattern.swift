@@ -146,7 +146,7 @@ internal class Include: Pattern {
 
     // MARK: - Initializers
 
-    init(reference: String, in repository: Repository? = nil, parent: Pattern?, manager: BundleManager /* not used */) {
+    init(reference: String, in repository: Repository? = nil, parent: Pattern?, manager: BundleManager /* not used but inherits from Pattern */) {
         self.associatedRepository = repository
         if reference.hasPrefix("#") {
             self.type = .toRepository(repositoryRef: String(reference[reference.index(after: reference.startIndex)...]))
@@ -194,7 +194,7 @@ internal class Include: Pattern {
         type = .resolved
     }
 
-    func resolveExternalReference(from thisLanguage: Language /* not used */, in languages: [String: Language], baseName: String?) {
+    func resolveExternalReference(in languages: [String: Language], baseName: String?) {
         let pattern: Pattern?
         switch type {
         case .toBase:

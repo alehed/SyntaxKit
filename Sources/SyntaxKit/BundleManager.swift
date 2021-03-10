@@ -107,15 +107,13 @@ open class BundleManager {
         return newLanguage
     }
 
-    open func theme(withIdentifier identifier: String) -> Theme? {
+    open func theme(withIdentifier identifier: String, fontCallback: Theme.FontCallback? = nil) -> Theme? {
         if let theme = cachedThemes[identifier] {
             return theme
         }
 
-        guard let dictURL = self.bundleCallback(identifier, .theme),
-            let plist = NSDictionary(contentsOf: dictURL) as? [String: Any],
-            let newTheme = Theme(dictionary: plist) else {
-                return nil
+        guard let newTheme = includeTheme(withIdentifier: identifier, fontCallback: fontCallback) else {
+            return nil
         }
 
         if themeCaching {
@@ -133,7 +131,7 @@ open class BundleManager {
     // MARK: - Internal Interface
 
     /// - parameter identifier: The identifier of the requested language.
-    /// - returns:  The Language with unresolved extenal references, if found
+    /// - returns:  The Language with unresolved extenal references, if found.
     private func includeLanguage(withIdentifier identifier: String) -> Language? {
         guard let dictURL = self.bundleCallback(identifier, .language),
               let plist = NSDictionary(contentsOf: dictURL) as? [String: Any],
@@ -141,5 +139,16 @@ open class BundleManager {
             return nil
         }
         return newLanguage
+    }
+    
+    /// - parameter identifier: The identifier of the requested theme.
+    /// - returns:  The Theme with unresolved extenal references, if found.
+    private func includeTheme(withIdentifier identifier: String, fontCallback: Theme.FontCallback? = nil) -> Theme? {
+        guard let dictURL = self.bundleCallback(identifier, .theme),
+            let plist = NSDictionary(contentsOf: dictURL) as? [String: Any],
+            let newTheme = Theme(dictionary: plist, fontCallback: fontCallback) else {
+                return nil
+        }
+        return newTheme
     }
 }

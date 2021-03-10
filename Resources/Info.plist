@@ -21,7 +21,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2015-2016 Sam Soffes. Copyright © 2016 Alexander Hedges. All rights reserved.</string>
+	<string>Copyright © 2015-2016 Sam Soffes. Copyright © 2016-2021 Alexander Hedges. Copyright © 2021 Zheng Wu.  All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
 </dict>

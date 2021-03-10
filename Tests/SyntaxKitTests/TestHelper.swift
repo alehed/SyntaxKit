@@ -10,22 +10,28 @@ import Foundation
 @testable import SyntaxKit
 import XCTest
 
+private let fixturesBundleURL = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("Fixtures").appendingPathComponent("TestSyntaxKit.bundle")
+
 internal func fixture(_ name: String, _ type: String) -> String {
-    if let path = Bundle(for: LanguageTests.self).path(forResource: name, ofType: type) {
-        do {
-            return try String(contentsOfFile: path)
-        } catch {
-            return ""
-        }
+    guard let testBundle = Bundle(url: fixturesBundleURL) else {
+        return ""
     }
-    return ""
+    guard let url = testBundle.url(forResource: name, withExtension: type) else {
+        return ""
+    }
+    do {
+        return try String(contentsOf: url)
+    } catch {
+        return ""
+    }
 }
 
 internal func getBundleManager() -> BundleManager {
     return BundleManager { identifier, kind in
         let name = kind == .language ? String(identifier.split(separator: ".")[1]) : identifier
         let ext = kind == .language ? ".tmLanguage" : ".tmTheme"
-        return Bundle(for: LanguageTests.self).url(forResource: name.capitalized, withExtension: ext) ?? URL(fileURLWithPath: "")
+        print("[*] Loading resources for \(name.capitalized)\(ext)")
+        return Bundle(url: fixturesBundleURL)?.url(forResource: name.capitalized, withExtension: ext) ?? URL(fileURLWithPath: "")
     }
 }
 

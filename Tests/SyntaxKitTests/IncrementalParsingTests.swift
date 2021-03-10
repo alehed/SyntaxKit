@@ -92,7 +92,7 @@ internal class IncrementalParsingTests: XCTestCase {
     private func getParsingOperation() -> AttributedParsingOperation? {
         if let language = manager.language(withIdentifier: "Source.swift"),
             let theme = manager.theme(withIdentifier: "tomorrow") {
-            return AttributedParsingOperation(string: input, language: language, theme: theme) { (results: [(range: NSRange, attributes: Attributes?)], _: AttributedParsingOperation) in
+            return AttributedParsingOperation(string: input, language: language, theme: theme) { (results: [AttributedParsingOperation.OperationTuple], _: AttributedParsingOperation) in
                 for result in results {
                     if let range = self.totalRange {
                         self.totalRange = NSUnionRange(range, result.range)

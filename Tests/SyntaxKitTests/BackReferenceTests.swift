@@ -2,7 +2,7 @@
 //  BackReferenceTests.swift
 //  SyntaxKit
 //
-//  Created by Rachel on 2021/2/19.
+//  Created by Zheng Wu on 2021/2/19.
 //  Copyright © 2021 Sam Soffes. All rights reserved.
 //
 
@@ -31,9 +31,11 @@ internal class BackReferenceTests: XCTestCase {
         XCTAssertFalse("title: \"Hello World\"\n".hasBackReferencePlaceholder)
         XCTAssertFalse("title: Hello World\ncomments: 24\nposts: \"12\"zz\n".hasBackReferencePlaceholder)
         XCTAssert("title: Hello World\ncomments: 24\nposts: \"12\\3\"zz\n".hasBackReferencePlaceholder)
-        
-        XCTAssertEqual("title: Hello World\ncomments: \\24\nposts: \"12\\3\"zz\n".convertToICUBackReferencedRegex(), "title: Hello World\ncomments: $24\nposts: \"12$3\"zz\n")
-        XCTAssertEqual("title: Hello World\ncomments: $24\nposts: \"12$3\"zz\n".convertToBackReferencedRegex(), "title: Hello World\ncomments: \\24\nposts: \"12\\3\"zz\n")
+
+        let testString1 = "title: Hello World\ncomments: \\24\nposts: \"12\\3\"zz\n"
+        let testString2 = "title: Hello World\ncomments: $24\nposts: \"12$3\"zz\n"
+        XCTAssertEqual(testString1.convertToICUBackReferencedRegex(), testString2)
+        XCTAssertEqual(testString2.convertToBackReferencedRegex(), testString1)
         
         XCTAssertEqual("(?<=\\.) {2,}(?=[A-Z])".addingRegexEscapedCharacters(), "\\(\\?<=\\\\\\.\\) \\{2,\\}\\(\\?=\\[A-Z\\]\\)")
     }

@@ -32,9 +32,9 @@ internal class AttributedParserTests: XCTestCase {
     func testParsing() {
         let string = parser?.attributedString(for: "title: Hello World\ncount: 42\n")
 
-        XCTAssertEqual(["color": "blue"], string?.attributes(at: 0, effectiveRange: nil) as NSDictionary?)
-        XCTAssertEqual(["color": "red"], string?.attributes(at: 7, effectiveRange: nil) as NSDictionary?)
-        XCTAssertEqual(["color": "blue"], string?.attributes(at: 19, effectiveRange: nil) as NSDictionary?)
-        XCTAssertEqual(["color": "purple"], string?.attributes(at: 25, effectiveRange: nil) as NSDictionary?)
+        XCTAssertEqual("blue", string?.attributes(at: 0, effectiveRange: nil)[NSAttributedString.Key("color")] as? String)
+        XCTAssertEqual("red", string?.attributes(at: 7, effectiveRange: nil)[NSAttributedString.Key("color")] as? String)
+        XCTAssertEqual("blue", string?.attributes(at: 19, effectiveRange: nil)[NSAttributedString.Key("color")] as? String)
+        XCTAssertEqual("purple", string?.attributes(at: 25, effectiveRange: nil)[NSAttributedString.Key("color")] as? String)
     }
 }

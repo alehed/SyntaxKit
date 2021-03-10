@@ -28,6 +28,7 @@ internal struct Diff {
     /// - Insertion: The inserted sting
     /// - Deletion:  The empty string
     var change: String
+    
     /// The range of the change in the old string
     ///
     /// - Insertion: The location of the insertion and length 0
@@ -62,23 +63,28 @@ open class AttributedParsingOperation: Operation {
     ///
     /// The sender is passed in so it can be used to check if the operation was
     /// cancelled after the call.
-    public typealias OperationCallback = ([(range: NSRange, attributes: Attributes?)], AttributedParsingOperation) -> Void
+    #if DEBUG
+    public typealias OperationTuple = (scope: String, range: NSRange, attributes: Attributes?)
+    #else
+    public typealias OperationTuple = (range: NSRange, attributes: Attributes?)
+    #endif
+    public typealias OperationCallback = ([OperationTuple], AttributedParsingOperation) -> Void
 
     // MARK: - Properties
 
     private let parser: AttributedParser
     private let operationCallback: OperationCallback
-    private var parsedRange: NSRange?
+    private var outdatedRange: NSRange?
 
     // MARK: - Initializers
-
+    
     /// Initializer for the first instance in the NSOperationQueue
     ///
     /// Can also be used if no incremental parsing is desired
     public init(string: String, language: Language, theme: Theme, callback: @escaping OperationCallback) {
-        parser = AttributedParser(language: language, theme: theme)
-        parser.toParse = ScopedString(string: string)
-        operationCallback = callback
+        self.parser = AttributedParser(language: language, theme: theme)
+        self.parser.toParse = ScopedString(string: string)
+        self.operationCallback = callback
         super.init()
     }
 
@@ -96,8 +102,8 @@ open class AttributedParsingOperation: Operation {
     ///                                 string that was added.
     /// - parameter callback:           The callback to call with results.
     public init(string: String, previousOperation: AttributedParsingOperation, changeIsInsertion insertion: Bool, changedRange range: NSRange, newCallback callback: OperationCallback? = nil) {
-        parser = previousOperation.parser
-        operationCallback = callback ?? previousOperation.operationCallback
+        self.parser = AttributedParser(language: previousOperation.parser.language, theme: previousOperation.parser.theme)
+        self.operationCallback = callback ?? previousOperation.operationCallback
 
         super.init()
 
@@ -108,8 +114,10 @@ open class AttributedParsingOperation: Operation {
             diff = Diff(change: "", range: range)
         }
 
-        if diff.representsChanges(from: parser.toParse.string, to: string) {
-            self.parsedRange = AttributedParsingOperation.outdatedRange(in: string as NSString, forChange: diff, updatingPreviousResult: &self.parser.toParse)
+        var prevParse = previousOperation.parser.toParse
+        if diff.representsChanges(from: prevParse.string, to: string) {
+            self.outdatedRange = AttributedParsingOperation.outdatedRange(in: string as NSString, forChange: diff, updatingPreviousResult: &prevParse)
+            self.parser.toParse = prevParse
         } else {
             self.parser.toParse = ScopedString(string: string)
         }
@@ -118,22 +126,30 @@ open class AttributedParsingOperation: Operation {
     // MARK: - NSOperation Implementation
 
     open override func main() {
-        var resultsArray: [(range: NSRange, attributes: Attributes?)] = []
+        var resultsArray: [OperationTuple] = []
+        #if DEBUG
+        let callback = { (scope: String, range: NSRange, attributes: Attributes?) in
+            if let attributes = attributes {
+                resultsArray.append((scope, range, attributes))
+            }
+        }
+        #else
         let callback = { (_: String, range: NSRange, attributes: Attributes?) in
             if let attributes = attributes {
                 resultsArray.append((range, attributes))
             }
         }
+        #endif
 
-        parser.parse(in: self.parsedRange, match: callback)
+        self.parser.parse(in: self.outdatedRange, match: callback)
 
-        if !parser.aborted {
-            operationCallback(resultsArray, self)
+        if !self.parser.aborted {
+            self.operationCallback(resultsArray, self)
         }
     }
 
     open override func cancel() {
-        parser.aborted = true
+        self.parser.aborted = true
         super.cancel()
     }
 
@@ -159,7 +175,7 @@ open class AttributedParsingOperation: Operation {
     ///
     /// - returns:  A range in newString that can be safely re-parsed. Or nil if
     ///             everything has to be reparsed.
-    class func outdatedRange(in newString: NSString, forChange diff: Diff, updatingPreviousResult previous: inout ScopedString) -> NSRange? {
+    class func outdatedRange(in newString: NSString, forChange diff: Diff, updatingPreviousResult previous: inout ScopedString) -> NSRange {
         let linesRange: NSRange
         let range: NSRange
         if diff.isInsertion() {

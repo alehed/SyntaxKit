@@ -135,7 +135,7 @@ open class Parser {
                 let bestMatchForMiddle = self.match(pattern.subpatterns, in: range)
 
                 if let patternEnd = pattern.end {
-                    if let endMatchResult = self.match(expandBackReferences(from: patternEnd, beginResults: begin), in: range, captures: pattern.endCaptures) {
+                    if let endMatchResult = self.match(patternEnd.expandedRegularExpression(with: toParse.string, matches: begin), in: range, captures: pattern.endCaptures) {
                         if let middleMatch = bestMatchForMiddle {
                             if !pattern.applyEndPatternLast && endMatchResult.range.location <= middleMatch.match.range.location || endMatchResult.range.location < middleMatch.match.range.location {
                                 result.add(endMatchResult)
@@ -207,7 +207,7 @@ open class Parser {
     /// - returns: The matched pattern and the matching result. Nil on failure.
     private func firstMatch(of pattern: Pattern, in range: NSRange, beginResults begin: ResultSet?) -> (pattern: Pattern, match: ResultSet)? {
         if let expression = pattern.match {
-            if let resultSet = self.match(expandBackReferences(from: expression, beginResults: begin), in: range, captures: pattern.captures, baseSelector: pattern.name) {
+            if let resultSet = self.match(expression.expandedRegularExpression(with: toParse.string, matches: begin), in: range, captures: pattern.captures, baseSelector: pattern.name) {
                 if resultSet.range.length != 0 {
                     return (pattern, resultSet)
                 }
@@ -305,25 +305,5 @@ open class Parser {
                 callback(result.patternIdentifier, result.range)
             }
         }
-    }
-
-    /// Expand all back references in a regular expression string.
-    ///
-    /// - parameter regex:      The regular expression string with back reference placeholders (patternEnd only)
-    /// - parameter begin:      The match result of the beginning
-    ///
-    /// - returns:  The regular expression string with its back reference placeholders expanded.
-    private func expandBackReferences(from regex: RegularExpression, beginResults begin: ResultSet?) -> RegularExpression {
-        guard regex.isTemplate,
-              let begin = begin,
-              let result = begin.results.first?.result else {
-            return regex
-        }
-        return (
-            try? RegularExpression(
-                pattern: regex.pattern.removingBackReferencePlaceholders(content: toParse.string, matches: result),
-                options: regex.options
-            )
-        ) ?? regex
     }
 }

@@ -2,11 +2,120 @@
 //  RegularExpression.swift
 //  SyntaxKit
 //
-//  Created by Rachel on 2021/2/19.
-//  Copyright © 2021 Sam Soffes. All rights reserved.
+//  Created by Zheng Wu on 2021/2/19.
+//  Copyright © 2021 Zheng Wu. All rights reserved.
 //
 
 import Foundation
+
+internal extension String {
+    static let zeroCChar = "0".cString(using: .ascii)![0]
+    static let backslashCChar = "\\".cString(using: .ascii)![0]
+    static let dollarCChar = "$".cString(using: .ascii)![0]
+
+    var hasBackReferencePlaceholder: Bool {
+        var escape = false
+        let buf = cString(using: .utf8)!.dropLast()
+        for ch in buf {
+            if escape && isdigit(Int32(ch)) != 0 {
+                return true
+            }
+            escape = !escape && ch == String.backslashCChar
+        }
+        return false
+    }
+
+    // Converts into an escaped regex string
+    func addingRegexEscapedCharacters() -> String {
+        let special = "\\|([{}]).?*+^$".cString(using: .ascii)
+        let buf = cString(using: .utf8)!.dropLast()
+        var res = ""
+        for ch in buf {
+            if strchr(special, Int32(ch)) != nil {
+                res += "\\"
+            }
+            res += String(format: "%c", ch)
+        }
+        return res
+    }
+
+    // Converts a back-referenced regex string to an ICU back-referenced regex string
+    func convertToICUBackReferencedRegex() -> String {
+        var escape = false
+        let buf = cString(using: .utf8)!.dropLast()
+        var res = ""
+        for ch in buf {
+            if escape && isdigit(Int32(ch)) != 0 {
+                res += String(format: "$%c", ch)
+                escape = false
+                continue
+            }
+            escape = !escape && ch == String.backslashCChar
+            if !escape {
+                res += String(format: "%c", ch)
+            }
+        }
+        return res
+    }
+
+    // Converts an ICU back-referenced regex string to a back-referenced regex string
+    func convertToBackReferencedRegex() -> String {
+        var escape = false
+        var capture = false
+        let buf = cString(using: .utf8)!.dropLast()
+        var res = ""
+        for ch in buf {
+            if !escape && capture && isdigit(Int32(ch)) != 0 {
+                capture = false
+                res += String(format: "\\%c", ch)
+                continue
+            }
+            if escape {
+                escape = false
+                res += String(format: "%c", ch)
+                continue
+            }
+            if !escape && ch == String.dollarCChar {
+                capture = true
+                continue
+            }
+            if ch == String.backslashCChar {
+                escape = true
+                continue
+            }
+            res += String(format: "%c", ch)
+        }
+        return res
+    }
+
+    // Expand a back-referenced regex string with original content and matches
+    func removingBackReferencePlaceholders(content: String, matches: NSTextCheckingResult) -> String {
+        var escape = false
+        let buf = cString(using: .utf8)!.dropLast()
+        var res = ""
+        for ch in buf {
+            if escape && isdigit(Int32(ch)) != 0 {
+                let i = Int(ch - String.zeroCChar)
+                if i <= matches.numberOfRanges - 1 {
+                    let refRange = matches.range(at: i)
+                    if refRange.location != NSNotFound {
+                        res += (content as NSString).substring(with: refRange).addingRegexEscapedCharacters()
+                    }
+                }
+                escape = false
+                continue
+            }
+            if escape {
+                res += "\\"
+            }
+            escape = !escape && ch == String.backslashCChar
+            if !escape {
+                res += String(format: "%c", ch)
+            }
+        }
+        return res
+    }
+}
 
 internal class RegularExpression {
 
@@ -33,6 +142,24 @@ internal class RegularExpression {
         if !self._isTemplate {
             self._expression = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options(rawValue: options.rawValue))
         }
+    }
+
+    func expandedRegularExpression(with referencedContent: String, matches: ResultSet?) -> RegularExpression {
+        return RegularExpression.expandRegularExpression(self, with: referencedContent, matches: matches)
+    }
+
+    private static func expandRegularExpression(_ regex: RegularExpression, with referencedContent: String, matches: ResultSet?) -> RegularExpression {
+        guard regex.isTemplate,
+              let matches = matches,
+              let result = matches.results.first?.result else {
+            return regex
+        }
+        return (
+            try? RegularExpression(
+                pattern: regex.pattern.removingBackReferencePlaceholders(content: referencedContent, matches: result),
+                options: regex.options
+            )
+        ) ?? regex
     }
 }
 
