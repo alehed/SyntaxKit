@@ -28,6 +28,7 @@ public struct Language: Hashable {
     public let uuid: UUID
     public let name: String
     public let scopeName: String
+    public let fileTypes: [String]
 
     let pattern: Pattern = Pattern()
     let referenceManager: ReferenceManager
@@ -44,15 +45,20 @@ public struct Language: Hashable {
             let uuid = UUID(uuidString: uuidString),
             let name = dictionary["name"] as? String,
             let scopeName = dictionary["scopeName"] as? String,
-            let array = dictionary["patterns"] as? [[String: Any]]
+            let patterns = dictionary["patterns"] as? [[String: Any]]
             else { return nil }
 
         self.uuid = uuid
         self.name = name
         self.scopeName = scopeName
+        if let fileTypes = dictionary["fileTypes"] as? [String] {
+            self.fileTypes = fileTypes
+        } else {
+            self.fileTypes = []
+        }
         self.referenceManager = ReferenceManager(bundleManager: manager)
 
-        self.pattern.subpatterns = referenceManager.patterns(for: array, in: nil, caller: nil)
+        self.pattern.subpatterns = referenceManager.patterns(for: patterns, in: nil, caller: nil)
         self.repository = Repository(repo: dictionary["repository"] as? [String: [AnyHashable: Any]] ?? [:], inParent: nil, with: referenceManager)
         referenceManager.resolveInternalReferences(with: repository, in: self)
     }
